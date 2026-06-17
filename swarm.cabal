@@ -1256,11 +1256,14 @@ executable swarm-docs
   import:
     stan-config, common, ghc2024-extensions,
     base,
-    optparse-applicative,
     text,
 
+  -- optparse-railroad re-exports optparse-applicative and adds --help2, which
+  -- dumps a railroad diagram of this CLI.  It lives in the connectors-diagrams
+  -- project, wired in via cabal.project.
   build-depends:
-    swarm:swarm-doc
+    swarm:swarm-doc,
+    optparse-railroad,
 
   main-is: Main.hs
   other-modules:

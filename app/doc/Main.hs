@@ -7,7 +7,7 @@ module Main where
 import Data.Foldable qualified
 import Data.Maybe (fromMaybe)
 import Data.Text qualified as T
-import Options.Applicative
+import Options.Applicative.Railroad
 import Swarm.Doc.Gen (EdgeFilter (..), GenerateDocs (..), PageAddress (..), SheetType (..), generateDocs)
 import Swarm.Doc.Keyword (EditorType (..))
 
@@ -72,4 +72,4 @@ cliInfo =
     )
 
 main :: IO ()
-main = generateDocs =<< execParser cliInfo
+main = generateDocs =<< execParserRailroad cliInfo
