@@ -72,4 +72,5 @@ cliInfo =
     )
 
 main :: IO ()
-main = generateDocs =<< execParserRailroad cliInfo
+main = generateDocs =<<
+  execParserRailroad "options-railroad" cliInfo
