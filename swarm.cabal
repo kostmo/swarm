@@ -1252,21 +1252,63 @@ executable swarm-scene
   ghc-options: -threaded
   default-extensions: ImportQualifiedPost
 
-executable swarm-docs
+library swarm-doc-exe
   import:
     stan-config, common, ghc2024-extensions,
     base,
     optparse-applicative,
     text,
 
+  -- cabal-gild: discover src/swarm-doc-exe
+  exposed-modules:
+    Swarm.Doc.CLI
+
   build-depends:
     swarm:swarm-doc
+
+  hs-source-dirs: src/swarm-doc-exe
+  ghc-options:
+    -hiedir=.hie/src/swarm-doc-exe
+
+  default-language: GHC2021
+
+executable swarm-docs
+  import:
+    stan-config, common, ghc2024-extensions,
+    base,
+    optparse-applicative,
+
+  build-depends:
+    swarm:swarm-doc,
+    swarm:swarm-doc-exe,
 
   main-is: Main.hs
   other-modules:
   hs-source-dirs: app/doc
   ghc-options:
     -hiedir=.hie/app/doc
+
+  default-language: GHC2021
+  ghc-options: -threaded
+  default-extensions: ImportQualifiedPost
+
+executable cli-args-render
+  import:
+    stan-config, common, ghc2024-extensions,
+    base,
+    directory,
+    filepath,
+
+  build-depends:
+    swarm:swarm-doc-exe,
+    connectors-diagrams:railroad-optparse,
+    connectors-diagrams:diagrams-backend,
+
+  main-is: Main.hs
+  other-modules:
+  hs-source-dirs: app/cli-args-render
+  ghc-options:
+    -hiedir=.hie/app/cli-args-render
 
   default-language: GHC2021
   ghc-options: -threaded
