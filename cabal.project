@@ -4,5 +4,6 @@
 -- NOTE: these are absolute local paths, not portable beyond this machine.
 packages:
   .
+  /home/kostmo/github/diagrams-connectors-2026/railroad-diagrams
   /home/kostmo/github/diagrams-connectors-2026/connectors-diagrams
   /home/kostmo/github/diagrams-connectors-2026/optparse-railroad
